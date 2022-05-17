@@ -1,0 +1,21 @@
+.container {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.avatarImg {
+  width: 185px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.avatar {
+  composes: avatarImg;
+}
+
+.name {
+  color: #fff;
+}
