@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Swiper from 'react-id-swiper';
 
 import { fetchReviewsDetails } from 'services/movieApi';
 import ReviewsCard from 'components/ReviewsCard/ReviewsCard';
@@ -8,11 +7,7 @@ import s from './Reviews.module.css';
 
 export default function Reviews() {
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState(null);
-
-  const params = {
-    slidesPerView: 3,
-  };
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     fetchReviewsDetails(movieId).then(data => {
@@ -22,10 +17,11 @@ export default function Reviews() {
 
   return (
     <ul className={s.wrapper}>
-      <Swiper {...params}>
-        {reviews &&
-          reviews.map(item => <ReviewsCard item={item} key={item.id} />)}
-      </Swiper>
+      {reviews.length > 0 ? (
+        reviews.map(item => <ReviewsCard item={item} key={item.id} />)
+      ) : (
+        <h4 className={s.noReviews}>No reviews</h4>
+      )}
     </ul>
   );
 }

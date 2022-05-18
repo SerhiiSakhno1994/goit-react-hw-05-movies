@@ -1,9 +1,14 @@
 .wrapper {
   display: grid;
   width: 100%;
-  max-width: 1020px;
+  max-width: 984px;
   background-color: #abcdef;
-  border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
+}
+.noReviews {
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
 }
