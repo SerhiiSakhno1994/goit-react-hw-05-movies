@@ -7,8 +7,6 @@ import TrendsGallery from 'components/TrendsGallery/TrendsGallery';
 
 import Searchbar from 'components/Searchbar/Searchbar';
 import Loader from 'components/Loader/Loader';
-import Cast from 'components/Section/Section';
-import { NavLink } from 'react-router-dom';
 
 const MoviesPage = () => {
   const [data, setData] = useState([]);

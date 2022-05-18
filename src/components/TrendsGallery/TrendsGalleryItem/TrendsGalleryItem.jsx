@@ -1,17 +1,25 @@
 import { Link } from 'react-router-dom';
 
 import s from './TrendsGalleryItem.module.css';
-import ErrorImage from '../../icons/no_mage.jpg';
+import NoFoto from './no_mage.jpg';
 
 export default function TrendsGalleryItem({ item }) {
   return (
     <li key={item.id} className={s.ImageGalleryItem}>
       <Link to={`/movies/${item.id}`} className={s.link}>
-        <img
-          className={s.ImageGalleryItemImage}
-          src={`https://themoviedb.org/t/p/w342${item.poster_path}`}
-          alt={item.original_title}
-        />
+        {item.poster_path ? (
+          <img
+            className={s.ImageGalleryItemImage}
+            src={`https://themoviedb.org/t/p/w342${item.poster_path}`}
+            alt={item.original_title}
+          />
+        ) : (
+          <img
+            className={s.ImageGalleryItemImage}
+            src={NoFoto}
+            alt={item.original_title}
+          />
+        )}
 
         <div className={s.text}>
           {item.title ? (
