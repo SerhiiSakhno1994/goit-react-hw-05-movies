@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, NavLink, Route, Routes, Outlet } from 'react-router-dom';
+import { useParams, NavLink, Outlet } from 'react-router-dom';
 
 import movieApp from 'services/movieApi';
 import Section from 'components/Section/Section';
