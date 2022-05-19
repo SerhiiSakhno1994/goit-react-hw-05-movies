@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import TrendsGalleryItem from './TrendsGalleryItem/TrendsGalleryItem';
 import s from './TrendsGallery.module.css';
 
@@ -10,3 +12,7 @@ export default function TrendsGallery({ data }) {
     </ul>
   );
 }
+
+TrendsGallery.propTypes = {
+  data: PropTypes.array.isRequired,
+};

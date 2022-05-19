@@ -22,4 +22,4 @@ const Layout = () => {
   );
 };
 
-export { Layout };
+export default Layout;

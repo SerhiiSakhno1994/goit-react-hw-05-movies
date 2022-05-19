@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import s from './MovieDetalisCard.module.css';
 
 export default function MovieDetalisCard({ movie }) {
@@ -6,9 +8,7 @@ export default function MovieDetalisCard({ movie }) {
       <div className={s.cardImg}>
         <img
           className={s.img}
-          src={`https://themoviedb.org/t/p/w342${
-            movie.poster_path ? movie.poster_path : movie.backdrop_path
-          }`}
+          src={`https://themoviedb.org/t/p/w342${movie.poster_path}`}
           alt={movie.title}
         />
       </div>
@@ -25,3 +25,7 @@ export default function MovieDetalisCard({ movie }) {
     </>
   );
 }
+
+MovieDetalisCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+};

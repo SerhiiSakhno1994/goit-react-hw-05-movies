@@ -10,8 +10,6 @@ export default function Cast() {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
 
-  console.log(cast);
-
   useEffect(() => {
     fetchActorsDetails(movieId).then(data => {
       setCast(data.cast);

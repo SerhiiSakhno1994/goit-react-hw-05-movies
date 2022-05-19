@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Notify } from 'notiflix';
 
@@ -12,8 +13,8 @@ export default function Searchbar({ onSubmit }) {
     setPicturesName(event.currentTarget.value.toLowerCase());
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
 
     if (picturesName.trim() === '') {
       return Notify.warning('Enter the text of the request');
@@ -27,7 +28,8 @@ export default function Searchbar({ onSubmit }) {
       <form className={s.Form} onSubmit={handleSubmit}>
         <input
           className={s.Input}
-          type="text"
+          type="search"
+          name="search"
           value={picturesName}
           autoComplete="off"
           autoFocus

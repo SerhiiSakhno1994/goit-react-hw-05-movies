@@ -4,6 +4,7 @@ import { useParams, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import movieApp from 'services/movieApi';
 import Section from 'components/Section/Section';
 import MovieDetalisCard from 'components/MovieDetalisCard/MovieDetalisCard';
+import Button from 'components/Button/Button';
 import s from '../../Layout/Layout.module.css';
 
 function MovieDetailsPage() {
@@ -14,9 +15,6 @@ function MovieDetailsPage() {
   const goBack = () => navigate(-1);
 
   useEffect(() => {
-    if (movie) {
-      return;
-    }
     movieApp.fetchMovieDetails(movieId).then(data => {
       setMovie(data);
     });
@@ -26,7 +24,7 @@ function MovieDetailsPage() {
     <>
       {movie && (
         <>
-          <button onClick={goBack}> Go back</button>
+          <Button onClick={goBack} text={'Go back'} />
           <Section>
             <MovieDetalisCard movie={movie} />
           </Section>
@@ -47,4 +45,4 @@ function MovieDetailsPage() {
   );
 }
 
-export { MovieDetailsPage };
+export default MovieDetailsPage;

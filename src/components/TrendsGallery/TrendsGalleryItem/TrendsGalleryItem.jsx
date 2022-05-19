@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import s from './TrendsGalleryItem.module.css';
@@ -34,3 +35,7 @@ export default function TrendsGalleryItem({ item }) {
     </li>
   );
 }
+
+TrendsGalleryItem.propTypes = {
+  item: PropTypes.object.isRequired,
+};

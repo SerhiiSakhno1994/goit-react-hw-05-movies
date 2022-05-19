@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import avatar from './avatar.webp';
 import s from './CastCard.module.css';
 
@@ -18,3 +20,7 @@ export default function CastCard({ item }) {
     </li>
   );
 }
+
+CastCard.propTypes = {
+  item: PropTypes.object.isRequired,
+};

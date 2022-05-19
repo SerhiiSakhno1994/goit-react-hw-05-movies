@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
+
 import s from './ReviewsCard.module.css';
+
 export default function ReviewsCard({ item }) {
   const noLink = item.author_details.avatar_path;
-
-  console.log(item);
 
   const handleAvatarLink = link => {
     if (!link) return '';
@@ -19,3 +20,7 @@ export default function ReviewsCard({ item }) {
     </li>
   );
 }
+
+ReviewsCard.propTypes = {
+  item: PropTypes.object.isRequired,
+};

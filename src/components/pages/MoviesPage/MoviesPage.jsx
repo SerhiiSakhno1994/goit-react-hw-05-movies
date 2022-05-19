@@ -1,5 +1,6 @@
 // import { Outlet, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Notiflix from 'notiflix';
 
 import { fetchMovieWithQuery } from 'services/movieApi';
@@ -10,31 +11,34 @@ import Loader from 'components/Loader/Loader';
 
 const MoviesPage = () => {
   const [data, setData] = useState([]);
-  const [movieNameName, setMovieName] = useState('');
+  // const [movieNameName, setMovieName] = useState('');
   const [loader, setIsLoader] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const postQuery = searchParams.get('movie') || '';
 
   useEffect(() => {
-    if (movieNameName === '') {
+    if (postQuery === '') {
       return;
     }
     setIsLoader(true);
-    fetchMovieWithQuery(movieNameName).then(r => {
-      // console.log(r);
+    fetchMovieWithQuery(postQuery).then(r => {
       if (r.results.length === 0) {
         Notiflix.Report.failure(
           'WARNING',
-          `Sorry, there is no image named ${movieNameName}`,
+          `Sorry, there is no image named ${postQuery}`,
           'Close'
         );
       }
-      setData(state => [...state, ...r.results]);
+      setData(state => [...r.results]);
       setIsLoader(false);
     });
-  }, [movieNameName]);
+  }, [postQuery]);
 
   const onSubmit = searchMovieName => {
     setData([]);
-    setMovieName(searchMovieName);
+    // setMovieName(searchMovieName);
+    setSearchParams({ movie: searchMovieName });
   };
 
   return (
@@ -46,4 +50,4 @@ const MoviesPage = () => {
   );
 };
 
-export { MoviesPage };
+export default MoviesPage;
